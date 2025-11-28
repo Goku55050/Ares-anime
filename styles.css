@@ -1,40 +1,110 @@
+
+/* General Body Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
+    color: #fff;
+    background-color: #0c0c0c;
+    overflow-x: hidden;
 }
 
+/* Cloud Background */
+.clouds {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://media.istockphoto.com/id/531653337/photo/sky-background.jpg?s=612x612&w=0&k=20&c=N5MGAE2a0Kq7j75Yk_6K1-x_ub3D-mALdG0sB_4-R2I=') repeat-x;
+    background-size: cover;
+    animation: move-clouds 60s linear infinite;
+    z-index: -1;
+    opacity: 0.2;
+}
+
+@keyframes move-clouds {
+    from { background-position: 0 0; }
+    to { background-position: -10000px 0; }
+}
+
+/* Header */
 header {
-    background-color: #f4f4f4;
-    padding: 20px;
     text-align: center;
+    padding: 40px 20px;
+    background: rgba(0,0,0,0.6);
 }
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
+header h1 {
+    font-size: 3.5em;
+    margin: 0;
+    font-family: 'Georgia', serif;
+    letter-spacing: 2px;
 }
 
-nav ul li {
-    display: inline;
-    margin-right: 10px;
-}
-
-nav ul li a {
-    color: #333;
-    text-decoration: none;
-}
-
+/* Main Content */
 main {
     padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
 }
 
-section {
-    margin-bottom: 20px;
-}
-
-footer {
-    background-color: #f4f4f4;
-    padding: 10px;
+/* Anime Card */
+.anime-card {
+    background: rgba(34, 34, 34, 0.85);
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
     text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
+
+.anime-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.7);
+}
+
+.anime-card img {
+    width: 100%;
+    border-radius: 4px;
+}
+
+.anime-card h2 {
+    font-size: 1.8em;
+    margin: 15px 0;
+}
+
+.anime-card p {
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+/* Watch Now Button */
+.watch-now-btn {
+    display: inline-block;
+    background-color: #e50914;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+
+.watch-now-btn:hover {
+    background-color: #f40612;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: rgba(0,0,0,0.7);
+    margin-top: 40px;
+}
+
