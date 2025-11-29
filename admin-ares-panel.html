@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="style.css" />
 </head>
-<body data-page="admin">
+<body id="admin" data-page="admin">
   <div class="stars-bg"></div>
 
   <header class="main-header">
@@ -14,17 +14,7 @@
   </header>
 
   <main class="main-content admin-page">
-    <!-- Login -->
-    <section id="admin-login">
-      <h1>Admin Login</h1>
-      <p>Enter admin password to edit anime / seasons / episodes.</p>
-      <input id="admin-password" type="password" placeholder="Password" />
-      <button id="admin-login-btn" class="btn-primary">Login</button>
-      <p id="admin-login-msg" class="error-text"></p>
-    </section>
-
-    <!-- Panel -->
-    <section id="admin-panel" class="admin-panel" style="display:none;">
+    <section id="admin-panel" class="admin-panel">
       <h2>Anime Data Editor (JSON)</h2>
       <p>
         This panel shows your current <strong>animeData</strong> as JSON.
@@ -41,17 +31,21 @@
       <textarea id="admin-json" spellcheck="false"></textarea>
 
       <div class="admin-buttons">
-        <button id="admin-download-json" class="btn-primary">
+        <button id="admin-load-json" class="btn-secondary">
+          Load from script.js
+        </button>
+
+        <button id="admin-export-json" class="btn-primary">
           Download JSON
         </button>
 
         <label class="btn-secondary file-label">
-          Import JSON
+          Import JSON file
           <input type="file" id="admin-import-file" accept="application/json" hidden />
         </label>
 
-        <button id="admin-refresh-json" class="btn-secondary">
-          Reset from script.js
+        <button id="admin-apply-import" class="btn-secondary">
+          Apply imported file to textarea
         </button>
       </div>
 
@@ -68,4 +62,4 @@
 
   <script src="script.js"></script>
 </body>
-</html>
+          </html>
