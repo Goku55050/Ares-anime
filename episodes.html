@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="style.css" />
 </head>
-<body data-page="episodes">
+<body id="episodes" data-page="episodes">
   <div class="stars-bg"></div>
 
   <header class="main-header">
@@ -19,20 +19,21 @@
   <main class="main-content">
     <section class="anime-detail">
       <div class="anime-detail-left">
-        <img id="anime-poster" src="" alt="Poster" class="detail-poster" />
+        <!-- Poster optional, JS abhi use nahi karta -->
+        <img id="episodes-poster" src="" alt="Poster" class="detail-poster" />
       </div>
       <div class="anime-detail-right">
-        <h1 id="anime-title"></h1>
-        <p id="anime-meta" class="anime-meta"></p>
-        <p id="anime-desc" class="anime-desc"></p>
+        <h1 id="episodes-anime-title"></h1>
+        <p id="episodes-season-name" class="anime-meta"></p>
+        <p id="episodes-anime-desc" class="anime-desc"></p>
       </div>
     </section>
 
     <section class="episodes-section">
       <h2>Episodes (Hindi Dubbed)</h2>
-      <div id="episodes-container">
-        <!-- Filled by script.js -->
-      </div>
+      <ul id="episode-list" class="episode-list">
+        <!-- Filled by script.js (renderEpisodesPage) -->
+      </ul>
     </section>
   </main>
 
@@ -46,4 +47,4 @@
 
   <script src="script.js"></script>
 </body>
-</html>
+  </html>
