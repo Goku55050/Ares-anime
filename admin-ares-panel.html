@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ares Admin Panel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="admin">
+  <div class="stars-bg"></div>
+
+  <header class="main-header">
+    <div class="logo">Ares Anime – Admin</div>
+  </header>
+
+  <main class="main-content admin-page">
+    <!-- Login -->
+    <section id="admin-login">
+      <h1>Admin Login</h1>
+      <p>Enter admin password to edit anime / seasons / episodes.</p>
+      <input id="admin-password" type="password" placeholder="Password" />
+      <button id="admin-login-btn" class="btn-primary">Login</button>
+      <p id="admin-login-msg" class="error-text"></p>
+    </section>
+
+    <!-- Panel -->
+    <section id="admin-panel" class="admin-panel" style="display:none;">
+      <h2>Anime Data Editor (JSON)</h2>
+      <p>
+        This panel shows your current <strong>animeData</strong> as JSON.
+        You can edit/add anime, seasons, episodes, streaming links, download links here.<br />
+        When finished:
+      </p>
+      <ol>
+        <li>Click <strong>Download JSON</strong> to save <code>anime-data.json</code>.</li>
+        <li>Open that file on your PC/phone and copy JSON.</li>
+        <li>Paste into <code>script.js</code> replacing existing <code>animeData</code> value.</li>
+        <li>Commit + push to GitHub → Vercel will auto-deploy, and users will see updates.</li>
+      </ol>
+
+      <textarea id="admin-json" spellcheck="false"></textarea>
+
+      <div class="admin-buttons">
+        <button id="admin-download-json" class="btn-primary">
+          Download JSON
+        </button>
+
+        <label class="btn-secondary file-label">
+          Import JSON
+          <input type="file" id="admin-import-file" accept="application/json" hidden />
+        </label>
+
+        <button id="admin-refresh-json" class="btn-secondary">
+          Reset from script.js
+        </button>
+      </div>
+
+      <p class="hint-text">
+        Note: This admin panel does <strong>not</strong> directly change your live site.  
+        You must download JSON and update <code>script.js</code> in your repo.
+      </p>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+    <p>Admin panel – do not share this URL publicly.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
