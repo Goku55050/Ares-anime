@@ -22,7 +22,7 @@ const animeData = [
         name: "Season 1",
         totalEpisodes: 24,
         episodes: [
-          { number: 1,  name: "Episode 1",  streamUrl: "https://filemoon.to/e/w489ph62gwkc", downloadUrl: "https://filemoon.to/download/w489ph62gwkc" },
+          { number: 1,  name: "Episode 1",  streamUrl: "https://filemoon.sx/e/w489ph62gwkc", downloadUrl: "https://filemoon.to/download/w489ph62gwkc" },
           { number: 2,  name: "Episode 2",  streamUrl: "", downloadUrl: "" },
           { number: 3,  name: "Episode 3",  streamUrl: "", downloadUrl: "" },
           { number: 4,  name: "Episode 4",  streamUrl: "", downloadUrl: "" },
@@ -55,7 +55,7 @@ const animeData = [
     title: "Dandadan (Hindi Dub)",
     poster: "https://i.postimg.cc/0NNKxZNr/DAN-DA-DAN-Official-Key-Art-2x3-1-scaled.jpg",
     description:
-      "Momo and Okarun get caught between aliens and spirits in a crazy supernatural battle. Hindi dubbed.",
+      "Momo and Okarun get caught up between aliens and ghosts in a wild supernatural fight. Hindi dubbed.",
     seasons: [
       {
         id: "s1",
@@ -111,7 +111,7 @@ const animeData = [
     title: "My Hero Academia (Hindi Dub)",
     poster: "https://i.postimg.cc/fW54SKWZ/Bokuno-Hiro-Akademiakeyvisual.jpg",
     description:
-      "Izuku Midoriya inherits One For All and joins U.A. High to become the number one hero. Hindi dubbed.",
+      "Izuku Midoriya, born without a Quirk, still dreams of becoming the greatest hero. Hindi dubbed.",
     seasons: [
       {
         id: "s1",
@@ -183,8 +183,11 @@ function findSeason(anime, seasonId) {
 
 function findEpisode(season, epNumber) {
   if (!season) return null;
-  return season.episodes.find(e => String(e.number) === String(epNumber)) || null;
-}// ---------- 3. HOME PAGE (index.html, body id="home") ----------
+  const num = Number(epNumber);
+  return season.episodes.find(e => e.number === num) || null;
+}
+
+// ---------- 3. HOME PAGE (index.html, body id="home") ----------
 
 function renderHomePage() {
   const listEl = document.getElementById("anime-list");
@@ -202,7 +205,8 @@ function renderHomePage() {
         <h2>${anime.title}</h2>
         <p class="anime-desc">${anime.description}</p>
         <p class="anime-meta">Hindi Dub • Seasons: ${anime.seasons.length}</p>
-        <button class="btn watch-now-btn"
+        <button
+          class="btn small"
           onclick="goToEpisodes('${anime.id}', 's1')">
           Browse Episodes
         </button>
@@ -238,22 +242,23 @@ function renderEpisodesPage() {
 
   if (titleEl) titleEl.textContent = anime.title;
   if (descEl) descEl.textContent = anime.description;
-  if (seasonEl) seasonEl.textContent = season.name + ` • ${season.totalEpisodes} Episodes (Hindi Dub)`;
+  if (seasonEl) seasonEl.textContent = season.name;
 
   listEl.innerHTML = "";
 
   season.episodes.forEach(ep => {
-    const li = document.createElement("li");
+    const li = document.createElement("div");
     li.className = "episode-item";
 
     li.innerHTML = `
-      <div class="episode-text">
+      <div class="episode-info">
         <span class="episode-number">Episode ${ep.number}</span>
-        <span class="episode-name">- ${ep.name}</span>
+        <span class="episode-name">${ep.name}</span>
       </div>
       <div class="episode-actions">
-        <button class="btn small"
-          onclick="goToWatch('${anime.id}','${season.id}',${ep.number})">
+        <button
+          class="btn small"
+          onclick="goToWatch('${anime.id}', '${season.id}', ${ep.number})">
           Watch Episode
         </button>
       </div>
@@ -266,7 +271,7 @@ function renderEpisodesPage() {
 function goToWatch(animeId, seasonId, epNumber) {
   window.location.href =
     `watch.html?anime=${encodeURIComponent(animeId)}&season=${encodeURIComponent(seasonId)}&ep=${encodeURIComponent(epNumber)}`;
-}
+           }
 
 // ---------- 5. WATCH PAGE (watch.html, body id="watch") ----------
 // - Plays stream in iframe
@@ -284,9 +289,9 @@ function renderWatchPage() {
 
   const titleEl = document.getElementById("watch-title");
   const iframeEl = document.getElementById("video-player");
-  const prevBtn = document.getElementById("btn-prev-ep");
-  const nextBtn = document.getElementById("btn-next-ep");
-  const downloadBtn = document.getElementById("btn-download");
+  const prevBtn = document.getElementById("prev-ep");
+  const nextBtn = document.getElementById("next-ep");
+  const downloadBtn = document.getElementById("download-btn");
   const epInfoEl = document.getElementById("watch-ep-info");
 
   if (!anime || !season || !episode) {
@@ -298,53 +303,43 @@ function renderWatchPage() {
     titleEl.textContent = `${anime.title} - ${season.name}`;
   }
   if (epInfoEl) {
-    epInfoEl.textContent = `Episode ${episode.number}: ${episode.name} (Hindi Dub)`;
+    epInfoEl.textContent = `Episode ${episode.number} – ${episode.name}`;
   }
 
   if (iframeEl) {
     if (episode.streamUrl) {
       iframeEl.src = episode.streamUrl;
     } else {
-      // No stream URL yet -> show message
       iframeEl.src = "";
-      iframeEl.replaceWith(document.createElement("div"));
-      const msg = document.createElement("div");
-      msg.className = "no-stream-msg";
-      msg.textContent = "Streaming link not added yet. Please add in admin/export.";
-      document.querySelector(".video-container")?.appendChild(msg);
+      iframeEl.replaceWith("Stream link not added yet. Please add in admin/export.");
     }
   }
 
-  // Prev/Next episode logic
-  const currentIndex = season.episodes.findIndex(e => e === episode);
-
   if (prevBtn) {
-    if (currentIndex > 0) {
-      prevBtn.disabled = false;
-      prevBtn.onclick = () => {
-        const prevEp = season.episodes[currentIndex - 1];
-        goToWatch(anime.id, season.id, prevEp.number);
-      };
-    } else {
-      prevBtn.disabled = true;
-    }
+    prevBtn.onclick = () => {
+      const prev = season.episodes.find(e => e.number === episode.number - 1);
+      if (!prev) {
+        alert("Ye pehla episode hai.");
+        return;
+      }
+      goToWatch(anime.id, season.id, prev.number);
+    };
   }
 
   if (nextBtn) {
-    if (currentIndex < season.episodes.length - 1) {
-      nextBtn.disabled = false;
-      nextBtn.onclick = () => {
-        const nextEp = season.episodes[currentIndex + 1];
-        goToWatch(anime.id, season.id, nextEp.number);
-      };
-    } else {
-      nextBtn.disabled = true;
-    }
+    nextBtn.onclick = () => {
+      const next = season.episodes.find(e => e.number === episode.number + 1);
+      if (!next) {
+        alert("Ye last episode hai.");
+        return;
+      }
+      goToWatch(anime.id, season.id, next.number);
+    };
   }
 
-  // Download button -> go to download.html with same params
   if (downloadBtn) {
-    downloadBtn.onclick = () => {
+    downloadBtn.onclick = e => {
+      e.preventDefault();
       window.location.href =
         `download.html?anime=${encodeURIComponent(anime.id)}&season=${encodeURIComponent(season.id)}&ep=${encodeURIComponent(episode.number)}`;
     };
@@ -376,23 +371,22 @@ function renderDownloadPage() {
   }
 
   if (titleEl) {
-    titleEl.textContent = `Download - ${anime.title}`;
+    titleEl.textContent = `Download – ${anime.title}`;
   }
   if (infoEl) {
-    infoEl.textContent = `Episode ${episode.number}: ${episode.name} (Hindi Dub)`;
+    infoEl.textContent = `Episode ${episode.number} – ${episode.name}`;
   }
 
-  let secondsLeft = 10;
+  let remaining = 10;
   if (countdownEl) {
-    countdownEl.textContent = secondsLeft.toString();
+    countdownEl.textContent = remaining;
   }
 
-  const timer = setInterval(() => {
-    secondsLeft--;
-    if (countdownEl) countdownEl.textContent = secondsLeft.toString();
-
-    if (secondsLeft <= 0) {
-      clearInterval(timer);
+  const interval = setInterval(() => {
+    remaining -= 1;
+    if (remaining < 0) {
+      clearInterval(interval);
+      if (countdownEl) countdownEl.textContent = "0";
 
       if (!buttonContainer) return;
 
@@ -411,9 +405,13 @@ function renderDownloadPage() {
         msg.textContent = "Download link not added yet. Please add in admin/export.";
         buttonContainer.appendChild(msg);
       }
+    } else {
+      if (countdownEl) countdownEl.textContent = remaining;
     }
   }, 1000);
-}// ---------- 7. ADMIN PAGE (hidden URL, body id="admin") ----------
+           }
+
+// ---------- 7. ADMIN PAGE (hidden URL, body id="admin") ----------
 // File example: admin-ares-13579.html (not linked anywhere)
 // Simple JS "password": Ares13579  (NOT real security, just basic protection)
 
@@ -440,23 +438,22 @@ function renderAdminPage() {
   if (!textarea) return;
 
   // Load current animeData into textarea
+  const safeData = {
+    animes: animeData
+  };
+  textarea.value = JSON.stringify(safeData, null, 2);
+
+  // Reload from current animeData
   if (loadBtn) {
     loadBtn.onclick = () => {
-      textarea.value = JSON.stringify(animeData, null, 2);
+      textarea.value = JSON.stringify({ animes: animeData }, null, 2);
+      alert("Reset JSON from current script.js data.");
     };
   }
 
-  // Export textarea JSON as file (you will commit it manually to GitHub)
+  // Download JSON file (for backup / editing on PC)
   if (exportBtn) {
     exportBtn.onclick = () => {
-      try {
-        // Just validate JSON parses
-        JSON.parse(textarea.value);
-      } catch (e) {
-        alert("JSON invalid: " + e.message);
-        return;
-      }
-
       const blob = new Blob([textarea.value], { type: "application/json" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
@@ -490,7 +487,7 @@ function renderAdminPage() {
 
 // ---------- 8. PAGE ROUTER ----------
 
-window.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
   const bodyId = document.body.id;
 
   if (bodyId === "home") {
