@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Download – Ares Anime</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="style.css" />
+  <title>Download Episode</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body id="download" data-page="download">
@@ -15,56 +15,14 @@
   </header>
 
   <main class="main-content">
-    <section class="download-info">
-      <h1 id="download-title">Preparing Download…</h1>
-      <p id="download-ep-info"></p>
-      <p>
-        Download will start in
-        <span id="download-count">10</span>
-        seconds…
-      </p>
-    </section>
-
-    <!-- ADS TOP -->
-    <section class="ads-section">
-      <div class="ad-block">
-        <!-- Banner Ad -->
-        <script type="text/javascript">
-          atOptions = {
-            'key' : '1ca930ec4b20fce9334ce7973ff6dd40',
-            'format' : 'iframe',
-            'height' : 250,
-            'width' : 300,
-            'params' : {}
-          };
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/1ca930ec4b20fce9334ce7973ff6dd40/invoke.js"></script>
-      </div>
-    </section>
-
-    <!-- BUTTON AREA (filled by JS after timer) -->
-    <section class="download-button-section">
-      <div id="download-button-container">
-        <!-- After 10 sec, script.js will inject <a href="episode.downloadUrl">Download Now</a> -->
-      </div>
-    </section>
-
-    <!-- ADS BOTTOM -->
-    <section class="ads-section">
-      <div class="ad-block">
-        <!-- Native Banner -->
-        <script async="async" data-cfasync="false" src="//pl28156526.effectivegatecpm.com/9fdbf75c26ef51a2b19dbf748cf83bef/invoke.js"></script>
-        <div id="container-9fdbf75c26ef51a2b19dbf748cf83bef"></div>
+    <section class="download-box">
+      <h1 id="dl-title">Preparing download…</h1>
+      <p id="dl-desc" class="subtitle"></p>
+      <div class="watch-controls">
+        <a id="dl-direct-link" class="btn-primary" target="_blank">Open Download Link</a>
       </div>
     </section>
   </main>
-
-  <footer class="main-footer">
-    <p>
-      Ares Anime does not host or upload any videos.
-      We only index publicly available third-party links.
-    </p>
-  </footer>
 
   <script src="script.js"></script>
 </body>
