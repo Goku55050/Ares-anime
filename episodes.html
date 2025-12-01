@@ -15,25 +15,52 @@
     <div class="logo">Ares Anime</div>
     <nav class="nav">
       <a href="index.html" class="nav-link">Home</a>
+      <a href="analysis.html" class="nav-link">Analysis</a>
     </nav>
   </header>
 
   <!-- MAIN CONTENT -->
   <main class="main-content">
-    <h1 id="anime-title" class="section-title">Loading…</h1>
+
+    <!-- ANIME HERO SECTION (Poster + Info) -->
+    <section class="anime-hero">
+      <div class="anime-hero-poster">
+        <img id="anime-poster" src="" alt="Anime Poster" />
+      </div>
+
+      <div class="anime-hero-info">
+        <h1 id="anime-title">Loading…</h1>
+        <p id="anime-description"></p>
+
+        <label for="season-select" style="margin-top: 10px; display: block;">
+          <b>Select Season</b>
+        </label>
+        <select id="season-select" class="season-dropdown"></select>
+      </div>
+    </section>
+
+    <!-- EPISODE LIST -->
+    <h2 class="section-title">Episodes</h2>
 
     <ul id="episode-list" class="episode-list">
-      <!-- Episodes auto-filled by script.js -->
+      <!-- Filled by script.js -->
     </ul>
+
+    <!-- DISCLAIMER -->
+    <div class="disclaimer-box" style="margin-top: 30px;">
+      <p>
+        Ares Anime does not store any files on its own server.<br>
+        We only index links from the internet hosted on third-party servers.<br>
+        We index links just like Google.<br><br>
+        © 2025 Ares Anime. All Rights Reserved.
+      </p>
+    </div>
+
   </main>
 
   <!-- FOOTER -->
   <footer class="main-footer">
-    <p>
-      Ares Anime does not store any files on own server,
-      We only index links from internet which are hosted on third-party services.
-      We Index Links Just Like Google
-    </p>
+    <p>© 2025 Ares Anime</p>
   </footer>
 
   <script src="script.js"></script>
