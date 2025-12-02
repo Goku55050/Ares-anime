@@ -5,16 +5,46 @@
   <title>Ares Anime – Watch</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* Responsive Player Fix */
+    .player-frame {
+      width: 100%;
+      position: relative;
+      background: #000;
+      border-radius: 18px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    /* Maintain 16:9 Aspect Ratio */
+    .player-frame::before {
+      content: "";
+      display: block;
+      padding-top: 56.25%; /* 16:9 ratio */
+    }
+
+    #video-player {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
+      border: none;
+      border-radius: 18px;
+    }
+  </style>
+
 </head>
 
 <body id="watch" data-page="watch">
-  <!-- Social Bar -->
+
+  <!-- Social Bar (single) -->
   <script
     type="text/javascript"
-    src="//pl28175335.effectivegatecpm.com/bf/f7/40/bff74014fab00afc7adbfb31359b1626.js"
-  ></script>
+    src="//pl28175335.effectivegatecpm.com/bf/f7/40/bff74014fab00afc7adbfb31359b1626.js">
+  </script>
 
-<script type="text/javascript" src="//pl28175335.effectivegatecpm.com/bf/f7/40/bff74014fab00afc7adbfb31359b1626.js"></script>
   <div class="stars-bg"></div>
 
   <!-- Watermark -->
@@ -25,7 +55,6 @@
     <div class="logo">Ares Anime</div>
     <nav class="nav">
       <a href="index.html" class="nav-link">Home</a>
-      
     </nav>
   </header>
 
@@ -37,22 +66,19 @@
       <h1 id="watch-title">Loading…</h1>
       <p id="watch-subtitle"></p>
     </div>
-    <!-- PLAYER + SERVERS -->
-    
+
     <!-- PLAYER + SERVERS -->
     <section class="watch-player">
-      <div id="server-buttons" class="server-buttons">
-        <!-- Server buttons injected by script.js -->
-      </div>
+      <div id="server-buttons" class="server-buttons"></div>
 
+      <!-- FIXED RESPONSIVE PLAYER -->
       <div class="player-frame">
         <iframe
           id="video-player"
           src=""
-          frameborder="0"
           allowfullscreen
-          loading="lazy"
-        ></iframe>
+          loading="lazy">
+        </iframe>
       </div>
 
       <!-- Banner Ad -->
@@ -68,8 +94,8 @@
         </script>
         <script
           type="text/javascript"
-          src="//www.highperformanceformat.com/1ca930ec4b20fce9334ce7973ff6dd40/invoke.js"
-        ></script>
+          src="//www.highperformanceformat.com/1ca930ec4b20fce9334ce7973ff6dd40/invoke.js">
+        </script>
       </div>
 
       <!-- Native Ad -->
@@ -77,16 +103,13 @@
         <script
           async="async"
           data-cfasync="false"
-          src="//pl28156526.effectivegatecpm.com/9fdbf75c26ef51a2b19dbf748cf83bef/invoke.js"
-        ></script>
+          src="//pl28156526.effectivegatecpm.com/9fdbf75c26ef51a2b19dbf748cf83bef/invoke.js">
+        </script>
         <div id="container-9fdbf75c26ef51a2b19dbf748cf83bef"></div>
       </div>
     </section>
 
-
-    <!-- Episode Meta -->
-    <div class="watch-meta">
-      
+    <!-- Download Button -->
     <a id="download-btn" href="#" class="btn-primary" style="margin-top: 14px; display: inline-block;">
       Download Episode
     </a>
