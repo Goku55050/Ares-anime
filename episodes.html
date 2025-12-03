@@ -1,47 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Ares Anime - Episodes</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Ares Anime – Episodes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="page-episodes">
+
+<body id="episodes" data-page="episodes">
+
+  <!-- Galaxy Background -->
   <div class="stars"></div>
   <div class="stars2"></div>
 
-  <header class="site-header">
-    <div class="logo">Ares Anime</div>
+  <!-- HEADER -->
+  <header class="main-header">
+    <div class="logo">
+      <span class="logo-top">Ares</span>
+      <span class="logo-bottom">Anime</span>
+    </div>
+
     <nav class="nav">
       <a href="index.html" class="nav-link">Home</a>
+      <a href="browse.html" class="nav-link">Browse</a>
     </nav>
   </header>
 
-  <main class="content episodes-layout">
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <!-- ANIME HEADER -->
     <section class="anime-header">
-      <img id="anime-poster" class="anime-poster" src="" alt="Anime poster">
+      <img id="anime-poster" class="anime-poster" src="" alt="Poster" />
+
       <div class="anime-info">
-        <h1 id="anime-title">Anime Title</h1>
-        <p id="anime-meta">Season 1 • Hindi Dubbed</p>
-        <p id="anime-desc"></p>
+        <h1 id="anime-title">Loading…</h1>
+        <p id="anime-description"></p>
       </div>
     </section>
 
-    <section class="episode-list-section">
-      <h2>Episode List</h2>
-      <ul id="episode-list" class="episode-list">
-        <!-- episodes injected by script.js -->
-      </ul>
+    <!-- SEASON SELECTOR -->
+    <section class="season-selector">
+      <label for="season-select" class="season-label">Season:</label>
+
+      <select id="season-select" class="season-dropdown">
+        <!-- seasons from script.js -->
+      </select>
     </section>
+
+    <!-- EPISODE LIST -->
+    <section class="episode-list-section">
+      <h2 class="episode-heading">Episodes</h2>
+
+      <div id="episode-list" class="episode-list">
+        <!-- episodes injected -->
+      </div>
+    </section>
+
   </main>
 
-  <footer class="site-footer">
-    <p>
-      Ares Anime does not host or upload any videos. We only index publicly available third-party streaming links.
-      All videos are hosted on external servers.
-    </p>
+  <!-- FOOTER -->
+  <footer class="main-footer">
+    <p>© 2025 Ares Anime</p>
   </footer>
 
   <script src="script.js"></script>
 </body>
-</html>
+  </html>
