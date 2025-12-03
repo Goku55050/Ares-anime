@@ -22,12 +22,12 @@ function initPage() {
   const page = document.body.dataset.page;
 
   switch (page) {
-    case "home": initHomePage(); break;
-    case "browse": initBrowsePage(); break;
+    case "home":     initHomePage();     break;
+    case "browse":   initBrowsePage();   break;
     case "episodes": initEpisodesPage(); break;
-    case "watch": initWatchPage(); break;
+    case "watch":    initWatchPage();    break;
     case "download": initDownloadPage(); break;
-    case "admin": initAdminPage(); break;
+    case "admin":    initAdminPage();    break;
   }
 }
 
@@ -48,8 +48,10 @@ function initHomePage() {
 function renderHeroBanner() {
   heroList = [...animeList].sort((a, b) => b.popularity - a.popularity);
 
+  // first slide
   setHeroAnime(heroList[0]);
 
+  // auto next every 5 sec
   setInterval(() => {
     heroIndex = (heroIndex + 1) % heroList.length;
     fadeHero(() => setHeroAnime(heroList[heroIndex]));
@@ -58,6 +60,10 @@ function renderHeroBanner() {
 
 function fadeHero(callback) {
   const hero = document.querySelector(".hero-inner");
+  if (!hero) {
+    callback();
+    return;
+  }
 
   hero.classList.add("fade-out");
 
@@ -70,19 +76,26 @@ function fadeHero(callback) {
   }, 800);
 }
 
-/* Set hero banner content */
+/* Set hero banner content (no long description) */
 function setHeroAnime(anime) {
   if (!anime) return;
 
-  document.getElementById("hero-title").textContent = anime.title;
-  document.getElementById("hero-meta").textContent =
-    `${anime.seasons.length} Seasons`;
+  const titleEl   = document.getElementById("hero-title");
+  const metaEl    = document.getElementById("hero-meta");
+  const posterEl  = document.getElementById("hero-poster");
+  const pillEl    = document.getElementById("hero-pill");
+  const watchBtn  = document.getElementById("hero-watch-btn");
 
-  document.getElementById("hero-poster").src = anime.poster;
-  document.getElementById("hero-pill").textContent = "Hindi Dub • Updated";
+  if (titleEl)  titleEl.textContent  = anime.title;
+  if (metaEl)   metaEl.textContent   = `${anime.seasons.length} Seasons`;
+  if (posterEl) posterEl.src         = anime.poster;
+  if (pillEl)   pillEl.textContent   = "Hindi Dub • Updated";
 
-  document.getElementById("hero-watch-btn").onclick = () =>
-    (location.href = `episodes.html?id=${anime.id}`);
+  if (watchBtn) {
+    watchBtn.onclick = () => {
+      location.href = `episodes.html?id=${anime.id}`;
+    };
+  }
 }
 
 /* ===========================================================
@@ -101,12 +114,15 @@ if (heroEl) {
   heroEl.addEventListener("touchend", (e) => {
     endX = e.changedTouches[0].clientX;
 
+    // swipe left = next
     if (startX - endX > 50) {
       heroIndex = (heroIndex + 1) % heroList.length;
-      setHeroAnime(heroList[heroIndex]);
-    } else if (endX - startX > 50) {
+      fadeHero(() => setHeroAnime(heroList[heroIndex]));
+    }
+    // swipe right = previous
+    else if (endX - startX > 50) {
       heroIndex = (heroIndex - 1 + heroList.length) % heroList.length;
-      setHeroAnime(heroList[heroIndex]);
+      fadeHero(() => setHeroAnime(heroList[heroIndex]));
     }
   });
 }
@@ -115,9 +131,18 @@ if (heroEl) {
    HOME ROWS
 =========================================================== */
 function renderHomeSections() {
-  renderHomeRow("latest-row", [...animeList].sort((a, b) => b.updated - a.updated));
-  renderHomeRow("popular-row", [...animeList].sort((a, b) => b.popularity - a.popularity));
-  renderHomeRow("trending-row", [...animeList].sort((a, b) => b.trending - a.trending));
+  renderHomeRow(
+    "latest-row",
+    [...animeList].sort((a, b) => b.updated - a.updated)
+  );
+  renderHomeRow(
+    "popular-row",
+    [...animeList].sort((a, b) => b.popularity - a.popularity)
+  );
+  renderHomeRow(
+    "trending-row",
+    [...animeList].sort((a, b) => b.trending - a.trending)
+  );
 }
 
 function renderHomeRow(id, list) {
@@ -126,7 +151,7 @@ function renderHomeRow(id, list) {
 
   row.innerHTML = "";
 
-  list.forEach(a => {
+  list.forEach((a) => {
     row.innerHTML += `
       <div class="anime-card" onclick="location.href='episodes.html?id=${a.id}'">
         <img src="${a.poster}">
@@ -134,26 +159,32 @@ function renderHomeRow(id, list) {
       </div>`;
   });
 }
+
 /* ===========================================================
    BROWSE PAGE
 =========================================================== */
 function initBrowsePage() {
   const searchBox = document.getElementById("browse-search-input");
+  if (!searchBox) return;
 
   renderBrowseList(animeList);
 
   searchBox.addEventListener("input", () => {
     const q = searchBox.value.toLowerCase();
-    const filtered = animeList.filter(a => a.title.toLowerCase().includes(q));
+    const filtered = animeList.filter((a) =>
+      a.title.toLowerCase().includes(q)
+    );
     renderBrowseList(filtered);
   });
 }
 
 function renderBrowseList(list) {
   const grid = document.getElementById("browse-list");
+  if (!grid) return;
+
   grid.innerHTML = "";
 
-  list.forEach(a => {
+  list.forEach((a) => {
     grid.innerHTML += `
       <div class="browse-card" onclick="location.href='episodes.html?id=${a.id}'">
         <img src="${a.poster}">
@@ -169,14 +200,20 @@ function initEpisodesPage() {
   const p = new URLSearchParams(location.search);
   const id = p.get("id");
 
-  const anime = animeList.find(a => a.id === id);
+  const anime = animeList.find((a) => a.id === id);
   if (!anime) return;
 
-  document.getElementById("anime-title").textContent = anime.title;
-  document.getElementById("anime-description").textContent = anime.description;
-  document.getElementById("anime-poster").src = anime.poster;
+  const titleEl = document.getElementById("anime-title");
+  const descEl  = document.getElementById("anime-description");
+  const posterEl= document.getElementById("anime-poster");
+
+  if (titleEl)  titleEl.textContent  = anime.title;
+  if (descEl)   descEl.textContent   = anime.description;
+  if (posterEl) posterEl.src         = anime.poster;
 
   const seasonSelect = document.getElementById("season-select");
+  if (!seasonSelect) return;
+
   seasonSelect.innerHTML = "";
 
   anime.seasons.forEach((s, index) => {
@@ -184,16 +221,21 @@ function initEpisodesPage() {
   });
 
   seasonSelect.onchange = () =>
-    renderEpisodes(anime, parseInt(seasonSelect.value));
+    renderEpisodes(anime, parseInt(seasonSelect.value, 10));
 
   renderEpisodes(anime, 0);
 }
 
 function renderEpisodes(anime, sIndex) {
   const list = document.getElementById("episodes-list");
+  if (!list) return;
+
   list.innerHTML = "";
 
-  anime.seasons[sIndex].episodes.forEach(ep => {
+  const season = anime.seasons[sIndex];
+  if (!season) return;
+
+  season.episodes.forEach((ep) => {
     list.innerHTML += `
       <div class="episode-card">
         <div>
@@ -207,54 +249,78 @@ function renderEpisodes(anime, sIndex) {
         </button>
       </div>`;
   });
-}
-
+   }
 /* ===========================================================
    WATCH PAGE
 =========================================================== */
 function initWatchPage() {
   const p = new URLSearchParams(location.search);
   const id = p.get("id");
-  const s = parseInt(p.get("s"));
-  const e = parseInt(p.get("e"));
+  const s  = parseInt(p.get("s"), 10);
+  const e  = parseInt(p.get("e"), 10);
 
-  const anime = animeList.find(a => a.id === id);
+  const anime  = animeList.find((a) => a.id === id);
+  if (!anime) return;
+
   const season = anime.seasons[s];
-  const ep = season.episodes.find(x => x.number === e);
+  if (!season) return;
 
-  document.getElementById("watch-title").textContent =
-    `${anime.title} – Episode ${e}`;
-  document.getElementById("watch-subtitle").textContent = season.name;
+  const ep = season.episodes.find((x) => x.number === e);
+  if (!ep) return;
+
+  const titleEl = document.getElementById("watch-title");
+  const subEl   = document.getElementById("watch-subtitle");
+
+  if (titleEl) titleEl.textContent = `${anime.title} – Episode ${e}`;
+  if (subEl)   subEl.textContent   = season.name;
 
   const serverList = document.getElementById("server-list");
+  if (!serverList) return;
+
   serverList.innerHTML = "";
 
-  ep.stream_servers.forEach(srv => {
+  ep.stream_servers.forEach((srv) => {
     serverList.innerHTML += `
       <button class="btn-primary small-btn" onclick="loadServer('${srv.url}')">
         ${srv.name}
       </button>`;
   });
 
-  loadServer(ep.stream_servers[0].url);
+  // load first server by default
+  if (ep.stream_servers.length > 0) {
+    loadServer(ep.stream_servers[0].url);
+  }
 
-  document.getElementById("prev-ep").onclick = () => {
-    if (e > 1)
-      location.href = `watch.html?id=${id}&s=${s}&e=${e - 1}`;
-  };
+  const prevBtn = document.getElementById("prev-ep");
+  const nextBtn = document.getElementById("next-ep");
+  const dlBtn   = document.getElementById("download-btn");
 
-  document.getElementById("next-ep").onclick = () => {
-    if (e < season.episodes.length)
-      location.href = `watch.html?id=${id}&s=${s}&e=${e + 1}`;
-  };
+  if (prevBtn) {
+    prevBtn.onclick = () => {
+      if (e > 1) {
+        location.href = `watch.html?id=${id}&s=${s}&e=${e - 1}`;
+      }
+    };
+  }
 
-  document.getElementById("download-btn").onclick = () => {
-    location.href = `download.html?id=${id}&s=${s}&e=${e}`;
-  };
+  if (nextBtn) {
+    nextBtn.onclick = () => {
+      if (e < season.episodes.length) {
+        location.href = `watch.html?id=${id}&s=${s}&e=${e + 1}`;
+      }
+    };
+  }
+
+  if (dlBtn) {
+    dlBtn.onclick = () => {
+      location.href = `download.html?id=${id}&s=${s}&e=${e}`;
+    };
+  }
 }
 
 function loadServer(url) {
-  document.getElementById("video-player").src = url;
+  const frame = document.getElementById("video-player");
+  if (frame) frame.src = url;
 }
 
 /* ===========================================================
@@ -263,21 +329,30 @@ function loadServer(url) {
 function initDownloadPage() {
   const p = new URLSearchParams(location.search);
   const id = p.get("id");
-  const s = parseInt(p.get("s"));
-  const e = parseInt(p.get("e"));
+  const s  = parseInt(p.get("s"), 10);
+  const e  = parseInt(p.get("e"), 10);
 
-  const anime = animeList.find(a => a.id === id);
+  const anime  = animeList.find((a) => a.id === id);
+  if (!anime) return;
+
   const season = anime.seasons[s];
-  const ep = season.episodes.find(x => x.number === e);
+  if (!season) return;
 
-  document.getElementById("download-title").textContent =
-    `${anime.title} – Episode ${e}`;
-  document.getElementById("download-subtitle").textContent = season.name;
+  const ep = season.episodes.find((x) => x.number === e);
+  if (!ep) return;
+
+  const titleEl = document.getElementById("download-title");
+  const subEl   = document.getElementById("download-subtitle");
+
+  if (titleEl) titleEl.textContent = `${anime.title} – Episode ${e}`;
+  if (subEl)   subEl.textContent   = season.name;
 
   const box = document.getElementById("download-buttons");
+  if (!box) return;
+
   box.innerHTML = "";
 
-  ep.download_servers.forEach(srv => {
+  ep.download_servers.forEach((srv) => {
     box.innerHTML += `
       <a class="btn-primary" href="${srv.url}" target="_blank">${srv.name}</a>`;
   });
@@ -288,7 +363,8 @@ function initDownloadPage() {
 function startCountdown() {
   let sec = 10;
   const timer = document.getElementById("download-timer");
-  const box = document.getElementById("download-buttons");
+  const box   = document.getElementById("download-buttons");
+  if (!timer || !box) return;
 
   const interval = setInterval(() => {
     sec--;
@@ -297,7 +373,7 @@ function startCountdown() {
     if (sec <= 0) {
       clearInterval(interval);
       timer.style.display = "none";
-      box.style.display = "block";
+      box.style.display   = "block";
     }
   }, 1000);
 }
@@ -312,14 +388,17 @@ function initAdminPage() {
   fillAnimeDropdowns();
 }
 
+/* Fill dropdowns */
 function fillAnimeDropdowns() {
   const select1 = document.getElementById("season-anime-select");
   const select2 = document.getElementById("episode-anime-select");
 
+  if (!select1 || !select2) return;
+
   select1.innerHTML = "";
   select2.innerHTML = "";
 
-  adminAnimeData.forEach(a => {
+  adminAnimeData.forEach((a) => {
     select1.innerHTML += `<option value="${a.id}">${a.title}</option>`;
     select2.innerHTML += `<option value="${a.id}">${a.title}</option>`;
   });
@@ -327,11 +406,19 @@ function fillAnimeDropdowns() {
   updateEpisodeSeasonDropdown();
 }
 
+/* Fill season dropdown in episode section */
 function updateEpisodeSeasonDropdown() {
-  const id = document.getElementById("episode-anime-select").value;
-  const anime = adminAnimeData.find(a => a.id === id);
+  const animeSelect = document.getElementById("episode-anime-select");
+  const seasonSel   = document.getElementById("episode-season-select");
+  if (!animeSelect || !seasonSel) return;
 
-  const seasonSel = document.getElementById("episode-season-select");
+  const id    = animeSelect.value;
+  const anime = adminAnimeData.find((a) => a.id === id);
+  if (!anime) {
+    seasonSel.innerHTML = "";
+    return;
+  }
+
   seasonSel.innerHTML = "";
 
   anime.seasons.forEach((s, index) => {
@@ -339,91 +426,165 @@ function updateEpisodeSeasonDropdown() {
   });
 }
 
+/* Add or update anime */
 function addAnime() {
-  const title = document.getElementById("anime-title").value;
-  const id = document.getElementById("anime-id").value;
-  const poster = document.getElementById("anime-poster").value;
-  const desc = document.getElementById("anime-description").value;
+  const title  = document.getElementById("anime-title").value.trim();
+  const id     = document.getElementById("anime-id").value.trim();
+  const poster = document.getElementById("anime-poster").value.trim();
+  const desc   = document.getElementById("anime-description").value.trim();
 
-  adminAnimeData.push({
-    id,
-    title,
-    poster,
-    description: desc,
-    popularity: 0,
-    trending: 0,
-    updated: Date.now(),
-    seasons: []
-  });
+  if (!id || !title) {
+    alert("Please enter at least Anime ID and Title.");
+    return;
+  }
 
-  alert("Anime Added!");
+  const existing = adminAnimeData.find((a) => a.id === id);
+
+  if (existing) {
+    existing.title       = title;
+    existing.poster      = poster;
+    existing.description = desc;
+    existing.updated     = Date.now();
+    alert("Anime updated!");
+  } else {
+    adminAnimeData.push({
+      id,
+      title,
+      poster,
+      description: desc,
+      popularity: 0,
+      trending: 0,
+      updated: Date.now(),
+      seasons: []
+    });
+    alert("Anime added!");
+  }
+
   fillAnimeDropdowns();
 }
 
+/* Add or update season (by name) */
 function addSeason() {
-  const id = document.getElementById("season-anime-select").value;
-  const name = document.getElementById("season-name").value;
+  const id   = document.getElementById("season-anime-select").value;
+  const name = document.getElementById("season-name").value.trim();
 
-  const anime = adminAnimeData.find(a => a.id === id);
-  anime.seasons.push({ name, episodes: [] });
+  if (!id || !name) {
+    alert("Select anime and enter season name.");
+    return;
+  }
 
-  alert("Season Added!");
+  const anime = adminAnimeData.find((a) => a.id === id);
+  if (!anime) return;
+
+  const existing = anime.seasons.find((s) => s.name === name);
+
+  if (existing) {
+    existing.name = name; // simple rename (no change to episodes)
+    alert("Season name updated!");
+  } else {
+    anime.seasons.push({ name, episodes: [] });
+    alert("Season added!");
+  }
+
   fillAnimeDropdowns();
 }
 
+/* Add or update episode (by episode number in that season) */
 function addEpisode() {
-  const id = document.getElementById("episode-anime-select").value;
-  const anime = adminAnimeData.find(a => a.id === id);
+  const animeSelect = document.getElementById("episode-anime-select");
+  const seasonSel   = document.getElementById("episode-season-select");
 
-  const sIndex = parseInt(document.getElementById("episode-season-select").value);
-  const epNum = parseInt(document.getElementById("ep-number").value);
-  const epTitle = document.getElementById("ep-title").value;
+  const id     = animeSelect.value;
+  const anime  = adminAnimeData.find((a) => a.id === id);
+  if (!anime) {
+    alert("Select a valid anime.");
+    return;
+  }
 
-  const fm = document.getElementById("stream-filemoon").value;
-  const st = document.getElementById("stream-streamtape").value;
-  const sh = document.getElementById("stream-streamgh").value;
+  const sIndex = parseInt(seasonSel.value, 10);
+  const season = anime.seasons[sIndex];
+  if (!season) {
+    alert("Select a valid season.");
+    return;
+  }
 
-  const dl_fm = document.getElementById("dl-filemoon").value;
-  const dl_sh = document.getElementById("dl-streamgh").value;
+  const epNum   = parseInt(document.getElementById("ep-number").value, 10);
+  const epTitle = document.getElementById("ep-title").value.trim();
 
-  anime.seasons[sIndex].episodes.push({
+  if (!epNum || !epTitle) {
+    alert("Please enter episode number and title.");
+    return;
+  }
+
+  const fm = document.getElementById("stream-filemoon").value.trim();
+  const st = document.getElementById("stream-streamtape").value.trim();
+  const sh = document.getElementById("stream-streamgh").value.trim();
+
+  const dl_fm = document.getElementById("dl-filemoon").value.trim();
+  const dl_sh = document.getElementById("dl-streamgh").value.trim();
+
+  const newEpisode = {
     number: epNum,
     title: epTitle,
     stream_servers: [
-      ...(fm ? [{ name: "Filemoon", url: fm }] : []),
+      ...(fm ? [{ name: "Filemoon",   url: fm }] : []),
       ...(st ? [{ name: "StreamTape", url: st }] : []),
-      ...(sh ? [{ name: "StreamGH", url: sh }] : [])
+      ...(sh ? [{ name: "StreamGH",   url: sh }] : [])
     ],
     download_servers: [
       ...(dl_fm ? [{ name: "Filemoon DL", url: dl_fm }] : []),
       ...(dl_sh ? [{ name: "StreamGH DL", url: dl_sh }] : [])
     ]
-  });
+  };
 
-  alert("Episode Added!");
+  const existingIndex = season.episodes.findIndex((ep) => ep.number === epNum);
+
+  if (existingIndex !== -1) {
+    // overwrite existing episode with same number
+    season.episodes[existingIndex] = newEpisode;
+    alert("Episode updated!");
+  } else {
+    season.episodes.push(newEpisode);
+    alert("Episode added!");
+  }
 }
 
 /* ===========================================================
    SAVE TO GITHUB
 =========================================================== */
 async function saveToGitHub() {
-  const owner = document.getElementById("github-owner").value;
-  const repo = document.getElementById("github-repo").value;
-  const branch = document.getElementById("github-branch").value;
-  const file = document.getElementById("github-file-path").value;
-  const token = document.getElementById("github-token").value;
+  const owner = document.getElementById("github-owner").value.trim();
+  const repo  = document.getElementById("github-repo").value.trim();
+  const branch= document.getElementById("github-branch").value.trim();
+  const file  = document.getElementById("github-file-path").value.trim();
+  const token = document.getElementById("github-token").value.trim();
+
+  if (!owner || !repo || !branch || !file || !token) {
+    alert("Please fill all GitHub fields.");
+    return;
+  }
 
   const apiURL = `https://api.github.com/repos/${owner}/${repo}/contents/${file}`;
 
+  // Get current file SHA
   const getRes = await fetch(apiURL, {
     headers: { Authorization: `Bearer ${token}` }
   });
 
+  if (!getRes.ok) {
+    alert("Failed to get existing file from GitHub.");
+    return;
+  }
+
   const getJSON = await getRes.json();
   const sha = getJSON.sha;
 
-  const content = btoa(unescape(encodeURIComponent(JSON.stringify(adminAnimeData, null, 2))));
+  // Encode new data
+  const content = btoa(
+    unescape(encodeURIComponent(JSON.stringify(adminAnimeData, null, 2)))
+  );
 
+  // Upload updated JSON
   const uploadRes = await fetch(apiURL, {
     method: "PUT",
     headers: {
@@ -438,6 +599,9 @@ async function saveToGitHub() {
     })
   });
 
-  if (uploadRes.ok) alert("Uploaded! Vercel will auto redeploy.");
-  else alert("Failed to upload to GitHub.");
-      }
+  if (uploadRes.ok) {
+    alert("Uploaded! Vercel will auto redeploy.");
+  } else {
+    alert("Failed to upload to GitHub.");
+  }
+     }
