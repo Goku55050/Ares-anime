@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ares Anime - Admin Panel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="admin">
+  <div class="stars"></div>
+  <div class="stars2"></div>
+
+  <header class="site-header">
+    <div class="logo">Ares Anime Admin</div>
+    <nav class="nav">
+      <a href="index.html" class="nav-link">Home</a>
+    </nav>
+  </header>
+
+  <main class="admin-layout">
+    <section class="admin-section">
+      <h2>Add New Anime</h2>
+      <form id="admin-add-anime">
+        <label>Anime ID (short, unique):
+          <input type="text" name="id" required />
+        </label>
+        <label>Title:
+          <input type="text" name="title" required />
+        </label>
+        <label>Cover URL:
+          <input type="url" name="cover" required />
+        </label>
+        <label>Description:
+          <textarea name="description" rows="3" required></textarea>
+        </label>
+        <label>First Season Number:
+          <input type="number" name="seasonNumber" value="1" min="1" required />
+        </label>
+        <label>Total Episodes (Season):
+          <input type="number" name="totalEpisodes" min="1" required />
+        </label>
+        <button type="submit" class="btn-primary">Add Anime</button>
+      </form>
+    </section>
+
+    <section class="admin-section">
+      <h2>Add Season to Existing Anime</h2>
+      <form id="admin-add-season">
+        <label>Select Anime:
+          <select name="animeId" id="admin-season-anime"></select>
+        </label>
+        <label>Season Number:
+          <input type="number" name="seasonNumber" min="1" required />
+        </label>
+        <label>Total Episodes:
+          <input type="number" name="totalEpisodes" min="1" required />
+        </label>
+        <button type="submit" class="btn-secondary">Add Season</button>
+      </form>
+    </section>
+
+    <section class="admin-section">
+      <h2>Add Episode</h2>
+      <form id="admin-add-episode">
+        <label>Select Anime:
+          <select name="animeId" id="admin-episode-anime"></select>
+        </label>
+        <label>Season Number:
+          <input type="number" name="seasonNumber" min="1" required />
+        </label>
+        <label>Episode Number:
+          <input type="number" name="episodeNumber" min="1" required />
+        </label>
+        <label>Episode Title:
+          <input type="text" name="episodeTitle" required />
+        </label>
+        <label>Stream URL:
+          <input type="url" name="streamUrl" required />
+        </label>
+        <label>Download URL (optional):
+          <input type="url" name="downloadUrl" />
+        </label>
+        <button type="submit" class="btn-secondary">Add Episode</button>
+      </form>
+    </section>
+
+    <section class="admin-section">
+      <h2>Custom Data Preview (localStorage)</h2>
+      <pre id="admin-data-preview" class="admin-preview"></pre>
+      <p class="admin-note">
+        Is JSON ko copy karke apne GitHub project me <code>anime-data.json</code> file me paste kar sakte ho
+        (ya niche “Save to GitHub” use karo).
+      </p>
+    </section>
+
+    <section class="admin-section">
+      <h2>Sync Anime Data to GitHub (Advanced)</h2>
+      <p class="admin-note">
+        Yeh tumhare current anime data ko GitHub repo me <code>anime-data.json</code> file ke andar push karega.
+        Repo ko Vercel se connect rakho toh auto redeploy ho jayega.
+      </p>
+      <label>GitHub Repo (owner/name):
+        <input type="text" id="gh-repo" placeholder="username/repo-name" />
+      </label>
+      <label>Branch:
+        <input type="text" id="gh-branch" value="main" />
+      </label>
+      <label>File Path:
+        <input type="text" id="gh-path" value="anime-data.json" />
+      </label>
+      <label>GitHub Token:
+        <input type="password" id="gh-token" placeholder="ghp_... (keep secret)" />
+      </label>
+      <button type="button" id="gh-save-btn" class="btn-primary">Save to GitHub</button>
+      <p id="gh-status" class="admin-note"></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Admin panel is client-side only (localStorage). GitHub sync optional hai – token kabhi share mat karo.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+            </html>
