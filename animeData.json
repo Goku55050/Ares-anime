@@ -66,6 +66,62 @@
                 "url": "https://hglink.to/download/apu5tm62i1eq"
               }
             ]
+          },
+          {
+            "number": 3,
+            "title": "Girl of Steel",
+            "stream_servers": [
+              {
+                "name": "Filemoon",
+                "url": "https://filemoon.art/e/9p89l186yo55"
+              },
+              {
+                "name": "StreamTape",
+                "url": "https://streamtape.com/e/LeKLkQpgdyfRlqK"
+              },
+              {
+                "name": "StreamGH",
+                "url": "https://hglink.to/e/0x8vziuvmlpr"
+              }
+            ],
+            "download_servers": [
+              {
+                "name": "Filemoon DL",
+                "url": "https://filemoon.art/download/9p89l186yo55"
+              },
+              {
+                "name": "StreamGH DL",
+                "url": "https://hglink.to/download/0x8vziuvmlpr"
+              }
+            ]
+          },
+          {
+            "number": 4,
+            "title": "Curse Womb Must Die",
+            "stream_servers": [
+              {
+                "name": "Filemoon",
+                "url": "https://filemoon.art/e/wpr8y7l40i8j"
+              },
+              {
+                "name": "StreamTape",
+                "url": "https://streamtape.com/e/K0wPvm6YlLS0rGL"
+              },
+              {
+                "name": "StreamGH",
+                "url": "https://hglink.to/e/4sk9ahurk9iq"
+              }
+            ],
+            "download_servers": [
+              {
+                "name": "Filemoon DL",
+                "url": "https://filemoon.art/download/wpr8y7l40i8j"
+              },
+              {
+                "name": "StreamGH DL",
+                "url": "https://hglink.to/download/4sk9ahurk9iq"
+              }
+            ]
           }
         ]
       }
@@ -73,12 +129,12 @@
   },
   {
     "id": "Cm",
-    "title": "Chainshow man",
+    "title": "Chainsaw Man(Hindi Dubbed)",
     "poster": "https://i.postimg.cc/k4MYByX1/MV5BZGY2ZTM2MWMt-Nz-A2OS00Zj-Jl-LWIw-ZTMt-MDBh-N2Ew-Yj-Zj-Zj-Ey-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX1000.jpg",
     "description": "Chainsaw Man is a dark fantasy, action-comedy series that follows the story of an impoverished young man named Denji who merges with his pet devil-dog, Pochita, to become a devil-human hybrid with chainsaws for a head and arms. He is then recruited by a government agency to hunt down powerful devils.",
     "popularity": 0,
     "trending": 0,
-    "updated": 1764785848914,
+    "updated": 1764786108892,
     "seasons": []
   }
 ]
