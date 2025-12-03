@@ -38,6 +38,34 @@
                 "url": "https://hglink.to/download/zabiengnlhza"
               }
             ]
+          },
+          {
+            "number": 2,
+            "title": "For Myself",
+            "stream_servers": [
+              {
+                "name": "Filemoon",
+                "url": "https://filemoon.art/e/3tk123l1oeju"
+              },
+              {
+                "name": "StreamTape",
+                "url": "https://streamtape.com/e/Djl6WX2DkAc3Le"
+              },
+              {
+                "name": "StreamGH",
+                "url": "https://hglink.to/e/apu5tm62i1eq"
+              }
+            ],
+            "download_servers": [
+              {
+                "name": "Filemoon DL",
+                "url": "https://filemoon.art/download/3tk123l1oeju"
+              },
+              {
+                "name": "StreamGH DL",
+                "url": "https://hglink.to/download/apu5tm62i1eq"
+              }
+            ]
           }
         ]
       }
