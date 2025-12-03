@@ -1,72 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Ares Anime - Hindi Dubbed</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Ares Anime – Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="page-home">
-  <!-- moving star background layers -->
+
+<body id="home" data-page="home">
+
+  <!-- Galaxy Background -->
   <div class="stars"></div>
   <div class="stars2"></div>
 
-  <header class="site-header">
-    <div class="logo">Ares Anime</div>
+  <!-- HEADER -->
+  <header class="main-header">
+    <div class="logo">
+      <span class="logo-top">Ares</span>
+      <span class="logo-bottom">Anime</span>
+    </div>
+
     <nav class="nav">
-      <a href="index.html" class="nav-link active">Home</a>
-      <a href="#anime-list" class="nav-link">Browse Anime</a>
-      <a href="admin.html" class="nav-link">Admin</a>
+      <a href="index.html" class="nav-link is-active">Home</a>
+      <a href="browse.html" class="nav-link">Browse</a>
+      <!-- ADMIN HIDDEN (only you can access manually) -->
     </nav>
   </header>
 
-  <main class="content">
-    <!-- HERO BANNER SLIDESHOW -->
-    <section class="hero-banner">
-      <div class="hero-bg" id="heroBg"></div>
-      <div class="hero-overlay"></div>
-      <div class="hero-inner">
-        <p class="hero-tag">Hindi Dubbed • Updated</p>
-        <h1 id="heroTitle">Loading…</h1>
-        <p id="heroDesc"></p>
-        <div class="hero-actions">
-          <button id="heroBtn" class="btn-primary">Watch Now</button>
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <!-- HERO BANNER -->
+    <section id="hero-banner" class="hero-banner">
+      <!-- Filled via script.js -->
+    </section>
+
+    <!-- HOME SEARCH BAR -->
+    <section class="home-search">
+      <div class="home-search-inner">
+        <input
+          type="text"
+          id="home-search-input"
+          class="home-search-input"
+          placeholder="Search anime…"
+          autocomplete="off"
+        />
+      </div>
+    </section>
+
+    <!-- HOME SECTIONS -->
+    <section class="home-sections">
+
+      <!-- LATEST -->
+      <div class="home-section-block">
+        <div class="section-header">
+          <h2>Latest</h2>
         </div>
+        <div class="card-row" id="latest-row"></div>
+      </div>
+
+      <!-- POPULAR -->
+      <div class="home-section-block">
+        <div class="section-header">
+          <h2>Popular</h2>
+        </div>
+        <div class="card-row" id="popular-row"></div>
+      </div>
+
+      <!-- TRENDING -->
+      <div class="home-section-block">
+        <div class="section-header">
+          <h2>Trending</h2>
+        </div>
+        <div class="card-row" id="trending-row"></div>
+      </div>
+
+    </section>
+
+    <!-- DISCLAIMER -->
+    <section class="disclaimer-section">
+      <div class="disclaimer-card">
+        <h3>Disclaimer</h3>
+        <p>
+          Ares Anime does not store any files on its own server. <br />
+          We only index links from the internet hosted on third-party servers. <br />
+          We index links just like Google.
+        </p>
+        <p class="disclaimer-copy">
+          © 2025 Ares Anime. All Rights Reserved.
+        </p>
       </div>
     </section>
 
-    <!-- Netflix-style rows -->
-    <section class="row-section">
-      <h2 class="row-title">Latest</h2>
-      <div class="row-scroll" id="row-latest"></div>
-    </section>
-
-    <section class="row-section">
-      <h2 class="row-title">Popular</h2>
-      <div class="row-scroll" id="row-popular"></div>
-    </section>
-
-    <section class="row-section">
-      <h2 class="row-title">Trending</h2>
-      <div class="row-scroll" id="row-trending"></div>
-    </section>
-
-    <!-- Full grid -->
-    <section class="anime-list-section">
-      <h2>All Hindi Dubbed Anime</h2>
-      <div id="anime-list" class="anime-grid">
-        <!-- cards injected by script.js -->
-      </div>
-    </section>
   </main>
 
-  <footer class="site-footer">
-    <p>
-      Ares Anime does not host or upload any videos. We only index publicly available third-party streaming links.
-      All videos are hosted on external servers.
-    </p>
+  <!-- FOOTER -->
+  <footer class="main-footer">
+    <p>© 2025 Ares Anime</p>
   </footer>
 
   <script src="script.js"></script>
 </body>
-</html>
+          </html>
