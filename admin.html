@@ -8,69 +8,88 @@
 
   <style>
     body {
-      background: #0a0f1f;
+      background: #070415;
       color: white;
       padding: 20px;
     }
+
     .admin-box {
-      background: rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.08);
       padding: 20px;
-      border-radius: 14px;
       margin-bottom: 30px;
+      border-radius: 16px;
+      backdrop-filter: blur(8px);
     }
-    .admin-input, select {
+
+    h1,h2,h3 {
+      margin-bottom: 10px;
+    }
+
+    .admin-input {
       width: 100%;
-      padding: 10px;
-      margin-top: 8px;
-      margin-bottom: 14px;
+      padding: 12px;
+      margin: 8px 0 18px 0;
+      background: rgba(255,255,255,0.12);
       border-radius: 10px;
       border: none;
+      color: #fff;
       outline: none;
     }
+
+    select.admin-input {
+      color: #fff;
+    }
+
     .btn {
-      padding: 10px 20px;
-      background: #4a6bff;
-      border-radius: 10px;
+      padding: 12px 20px;
+      border-radius: 12px;
+      background: linear-gradient(45deg,#4d7dff,#ff4ad7);
       border: none;
-      color: white;
       cursor: pointer;
-      margin-top: 10px;
+      font-size: 15px;
+      margin-top: 5px;
+      color: white;
     }
+
     .btn:hover {
-      opacity: 0.85;
+      opacity: .8;
     }
+
     .server-row {
-      background: rgba(255,255,255,0.05);
-      padding: 10px;
-      margin-bottom: 10px;
-      border-radius: 10px;
+      background: rgba(255,255,255,0.1);
+      padding: 12px;
+      border-radius: 12px;
+      margin-bottom: 12px;
+    }
+
+    #lock-screen {
+      text-align: center;
+      margin-top: 100px;
+      display: none;
     }
   </style>
 </head>
 
 <body id="admin" data-page="admin">
 
-<h1>🔐 Ares Anime – Admin Panel</h1>
-<p>Only you can access this page.</p>
-
-<hr><br>
-
-<!-- SECRET KEY CHECK -->
-<div id="admin-locked" style="display:none; text-align:center; margin-top:40px;">
-  <h2>Access Denied ❌</h2>
-  <p>Incorrect or missing admin key.</p>
+<!-- HIDDEN ACCESS PROTECTION -->
+<div id="lock-screen">
+  <h2>Access Denied</h2>
+  <p>Invalid admin key.</p>
 </div>
 
 <div id="admin-panel">
+
+  <h1>🔐 Ares Anime Admin Panel</h1>
+  <p>Manage anime, seasons, episodes & servers.</p>
 
   <!-- ADD ANIME -->
   <div class="admin-box">
     <h2>➕ Add Anime</h2>
 
     <input id="anime-title" class="admin-input" placeholder="Anime Title" />
-    <input id="anime-id" class="admin-input" placeholder="Anime ID (unique)" />
+    <input id="anime-id" class="admin-input" placeholder="Anime ID (unique, no spaces)" />
     <input id="anime-poster" class="admin-input" placeholder="Poster URL" />
-
     <textarea id="anime-description" class="admin-input" placeholder="Description"></textarea>
 
     <button class="btn" onclick="addAnime()">Save Anime</button>
@@ -81,7 +100,7 @@
     <h2>📁 Add Season</h2>
 
     <select id="season-anime-select" class="admin-input"></select>
-    <input id="season-name" class="admin-input" placeholder="Season Name (ex: Season 1)" />
+    <input id="season-name" class="admin-input" placeholder="Season Name (e.g. Season 1)" />
 
     <button class="btn" onclick="addSeason()">Add Season</button>
   </div>
@@ -98,21 +117,19 @@
 
     <h3>Streaming Servers</h3>
 
-    <div id="stream-list">
-      <div class="server-row">
-        <label>Filemoon URL</label>
-        <input id="stream-filemoon" class="admin-input" placeholder="https://filemoon.com/e/...">
-      </div>
+    <div class="server-row">
+      <label>Filemoon URL</label>
+      <input id="stream-filemoon" class="admin-input" placeholder="https://filemoon.to/e/...">
+    </div>
 
-      <div class="server-row">
-        <label>StreamTape URL</label>
-        <input id="stream-streamtape" class="admin-input" placeholder="https://streamtape.com/e/...">
-      </div>
+    <div class="server-row">
+      <label>StreamTape URL</label>
+      <input id="stream-streamtape" class="admin-input" placeholder="https://streamtape.com/e/...">
+    </div>
 
-      <div class="server-row">
-        <label>StreamGH URL</label>
-        <input id="stream-streamgh" class="admin-input" placeholder="https://streamgh.com/e/...">
-      </div>
+    <div class="server-row">
+      <label>StreamGH URL</label>
+      <input id="stream-streamgh" class="admin-input" placeholder="https://streamgh.com/e/...">
     </div>
 
     <h3>Download Servers</h3>
@@ -130,10 +147,17 @@
     <button class="btn" onclick="addEpisode()">Add Episode</button>
   </div>
 
-  <!-- SAVE TO GITHUB -->
+  <!-- GITHUB SAVE -->
   <div class="admin-box">
-    <h2>🧾 Save All Changes</h2>
-    <button class="btn" onclick="saveToGitHub()">Save to GitHub & Auto Deploy</button>
+    <h2>💾 Save to GitHub (Auto Deploy)</h2>
+
+    <input id="github-owner" class="admin-input" placeholder="GitHub Owner (e.g. Goku55050)" />
+    <input id="github-repo" class="admin-input" placeholder="Repository Name (e.g. Automatic-website-)" />
+    <input id="github-branch" class="admin-input" placeholder="Branch (main)" value="main" />
+    <input id="github-file-path" class="admin-input" placeholder="animeData.json" value="animeData.json" />
+    <input id="github-token" class="admin-input" placeholder="GitHub Token (NOT SAVED)" type="password" />
+
+    <button class="btn" onclick="saveToGitHub()">Save Changes to GitHub</button>
   </div>
 
 </div>
@@ -141,113 +165,17 @@
 <script src="script.js"></script>
 
 <script>
-/* ---------------------------
-   ADMIN PAGE PROTECTION
----------------------------- */
-const url = new URLSearchParams(window.location.search);
-const key = url.get("key");
+/* ---------------------------------------
+   SIMPLE ADMIN LOCK
+---------------------------------------- */
+const ADMIN_KEY = "ARES2025";  // You can change this
+const keyFromURL = window.location.search.replace("?key=", "");
 
-// YOUR SECRET KEY (Set any password you want)
-const ADMIN_KEY = "ARES2025";
-
-if (key !== ADMIN_KEY) {
+if (keyFromURL !== ADMIN_KEY) {
   document.getElementById("admin-panel").style.display = "none";
-  document.getElementById("admin-locked").style.display = "block";
-}
-
-/* ---------------------------
-   ADMIN FUNCTIONS
----------------------------- */
-
-function refreshAnimeDropdowns() {
-  const seasonAnime = document.getElementById("season-anime-select");
-  const epAnime = document.getElementById("episode-anime-select");
-
-  seasonAnime.innerHTML = "";
-  epAnime.innerHTML = "";
-
-  animeList.forEach(a => {
-    seasonAnime.innerHTML += `<option value="${a.id}">${a.title}</option>`;
-    epAnime.innerHTML += `<option value="${a.id}">${a.title}</option>`;
-  });
-
-  refreshSeasonDropdown();
-}
-
-function refreshSeasonDropdown() {
-  const animeId = document.getElementById("episode-anime-select").value;
-  const seasonList = document.getElementById("episode-season-select");
-  seasonList.innerHTML = "";
-
-  const anime = animeList.find(a => a.id === animeId);
-  anime.seasons.forEach((s, i) => {
-    seasonList.innerHTML += `<option value="${i}">${s.name}</option>`;
-  });
-}
-
-function addAnime() {
-  let obj = {
-    id: document.getElementById("anime-id").value,
-    title: document.getElementById("anime-title").value,
-    poster: document.getElementById("anime-poster").value,
-    description: document.getElementById("anime-description").value,
-    popularity: 1,
-    trending: 1,
-    updated: Date.now(),
-    seasons: []
-  };
-
-  animeList.push(obj);
-  alert("Anime added!");
-  refreshAnimeDropdowns();
-}
-
-function addSeason() {
-  const animeId = document.getElementById("season-anime-select").value;
-  const anime = animeList.find(a => a.id === animeId);
-
-  anime.seasons.push({
-    name: document.getElementById("season-name").value,
-    episodes: []
-  });
-
-  alert("Season added!");
-  refreshSeasonDropdown();
-}
-
-function addEpisode() {
-  const animeId = document.getElementById("episode-anime-select").value;
-  const seasonIndex = parseInt(document.getElementById("episode-season-select").value);
-
-  const anime = animeList.find(a => a.id === animeId);
-
-  anime.seasons[seasonIndex].episodes.push({
-    number: parseInt(document.getElementById("ep-number").value),
-    title: document.getElementById("ep-title").value,
-
-    watch_servers: [
-      { name: "Filemoon", url: document.getElementById("stream-filemoon").value },
-      { name: "StreamTape", url: document.getElementById("stream-streamtape").value },
-      { name: "StreamGH", url: document.getElementById("stream-streamgh").value }
-    ],
-
-    download_servers: [
-      { name: "Filemoon DL", url: document.getElementById("dl-filemoon").value },
-      { name: "StreamGH DL", url: document.getElementById("dl-streamgh").value }
-    ]
-  });
-
-  alert("Episode added!");
-}
-
-/* ---------------------------
-   SAVE TO GITHUB (API READY)
-----------------------------*/
-
-function saveToGitHub() {
-  alert("Your animeData.json is ready. Connect GitHub API to auto-update.");
+  document.getElementById("lock-screen").style.display = "block";
 }
 </script>
 
 </body>
-  </html>
+      </html>
