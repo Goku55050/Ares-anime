@@ -1,1 +1,154 @@
-[]
+[
+  {
+    "id": "Jjk",
+    "name": "Jujutsu kaisen",
+    "poster": "https://i.postimg.cc/zBSSkFsD/818DUzqnw-ES.jpg",
+    "description": "Jjk",
+    "episodes": [
+      {
+        "number": 1,
+        "title": "Ryomen Sukuna",
+        "streamUrl": "https://hglink.to/e/zabiengnlhza",
+        "downloadUrl": "https://hglink.to/download/zabiengnlhza"
+      },
+      {
+        "number": 2,
+        "title": "Episode 2",
+        "streamUrl": "",
+        "downloadUrl": ""
+      },
+      {
+        "number": 3,
+        "title": "Episode 3",
+        "streamUrl": "",
+        "downloadUrl": ""
+      },
+      {
+        "number": 4,
+        "title": "Episode 4",
+        "streamUrl": "",
+        "downloadUrl": ""
+      },
+      {
+        "number": 5,
+        "title": "Episode 5",
+        "streamUrl": "",
+        "downloadUrl": ""
+      },
+      {
+        "number": 6,
+        "title": "Episode 6",
+        "streamUrl": "",
+        "downloadUrl": ""
+      },
+      {
+        "number": 7,
+        "title": "Episode 7",
+        "streamUrl": "",
+        "downloadUrl": ""
+      },
+      {
+        "number": 8,
+        "title": "Episode 8",
+        "streamUrl": "",
+        "downloadUrl": ""
+      },
+      {
+        "number": 9,
+        "title": "Episode 9",
+        "streamUrl": "",
+        "downloadUrl": ""
+      },
+      {
+        "number": 10,
+        "title": "Episode 10",
+        "streamUrl": "",
+        "downloadUrl": ""
+      },
+      {
+        "number": 11,
+        "title": "Episode 11",
+        "streamUrl": "",
+        "downloadUrl": ""
+      },
+      {
+        "number": 12,
+        "title": "Episode 12",
+        "streamUrl": "",
+        "downloadUrl": ""
+      },
+      {
+        "number": 13,
+        "title": "Episode 13",
+        "streamUrl": "",
+        "downloadUrl": ""
+      },
+      {
+        "number": 14,
+        "title": "Episode 14",
+        "streamUrl": "",
+        "downloadUrl": ""
+      },
+      {
+        "number": 15,
+        "title": "Episode 15",
+        "streamUrl": "",
+        "downloadUrl": ""
+      },
+      {
+        "number": 16,
+        "title": "Episode 16",
+        "streamUrl": "",
+        "downloadUrl": ""
+      },
+      {
+        "number": 17,
+        "title": "Episode 17",
+        "streamUrl": "",
+        "downloadUrl": ""
+      },
+      {
+        "number": 18,
+        "title": "Episode 18",
+        "streamUrl": "",
+        "downloadUrl": ""
+      },
+      {
+        "number": 19,
+        "title": "Episode 19",
+        "streamUrl": "",
+        "downloadUrl": ""
+      },
+      {
+        "number": 20,
+        "title": "Episode 20",
+        "streamUrl": "",
+        "downloadUrl": ""
+      },
+      {
+        "number": 21,
+        "title": "Episode 21",
+        "streamUrl": "",
+        "downloadUrl": ""
+      },
+      {
+        "number": 22,
+        "title": "Episode 22",
+        "streamUrl": "",
+        "downloadUrl": ""
+      },
+      {
+        "number": 23,
+        "title": "Episode 23",
+        "streamUrl": "",
+        "downloadUrl": ""
+      },
+      {
+        "number": 24,
+        "title": "Episode 24",
+        "streamUrl": "",
+        "downloadUrl": ""
+      }
+    ]
+  }
+]
