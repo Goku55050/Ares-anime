@@ -1212,6 +1212,90 @@
     "popularity": 0,
     "trending": 0,
     "updated": 1765024253898,
-    "seasons": []
+    "seasons": [
+      {
+        "name": "Season 1",
+        "episodes": [
+          {
+            "number": 1,
+            "title": "The Fool",
+            "stream_servers": [],
+            "download_servers": []
+          },
+          {
+            "number": 2,
+            "title": "Beyonder",
+            "stream_servers": [],
+            "download_servers": []
+          },
+          {
+            "number": 3,
+            "title": "The Notebook",
+            "stream_servers": [],
+            "download_servers": []
+          },
+          {
+            "number": 4,
+            "title": "Magic Mirror",
+            "stream_servers": [],
+            "download_servers": []
+          },
+          {
+            "number": 5,
+            "title": "Hero",
+            "stream_servers": [],
+            "download_servers": []
+          },
+          {
+            "number": 6,
+            "title": "Teacher",
+            "stream_servers": [],
+            "download_servers": []
+          },
+          {
+            "number": 7,
+            "title": "Coincidence",
+            "stream_servers": [],
+            "download_servers": []
+          },
+          {
+            "number": 8,
+            "title": "Losing Control",
+            "stream_servers": [],
+            "download_servers": []
+          },
+          {
+            "number": 9,
+            "title": "Party",
+            "stream_servers": [],
+            "download_servers": []
+          },
+          {
+            "number": 10,
+            "title": "Clue",
+            "stream_servers": [],
+            "download_servers": []
+          },
+          {
+            "number": 11,
+            "title": "The Mastermind",
+            "stream_servers": [],
+            "download_servers": []
+          },
+          {
+            "number": 12,
+            "title": "The Bomb",
+            "stream_servers": [],
+            "download_servers": []
+          },
+          {
+            "number": 13,
+            "title": "The Light",
+            "stream_servers": [],
+            "download_servers": []
+          }
+        ]
+      }
+    ]
   }
 ]
