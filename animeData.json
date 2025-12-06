@@ -1004,6 +1004,84 @@
     "popularity": 0,
     "trending": 0,
     "updated": 1765017779966,
-    "seasons": []
+    "seasons": [
+      {
+        "name": "Season 1",
+        "episodes": [
+          {
+            "number": 1,
+            "title": "It Takes a Great Talent and Skill to Conceal One’s Talent and Skill",
+            "stream_servers": [],
+            "download_servers": []
+          },
+          {
+            "number": 2,
+            "title": "It Takes Hard Work and Dedication to Make an Effort Truly Worthwhile",
+            "stream_servers": [],
+            "download_servers": []
+          },
+          {
+            "number": 3,
+            "title": "Man Is an Animal That Makes Bargains: No Other Animal Does This – No Dog Exchanges Bones with Another",
+            "stream_servers": [],
+            "download_servers": []
+          },
+          {
+            "number": 4,
+            "title": "We Should Not Be Upset That Others Hide the Truth from Us, When We Hide It from Ourselves",
+            "stream_servers": [],
+            "download_servers": []
+          },
+          {
+            "number": 5,
+            "title": "Hell Is Other People",
+            "stream_servers": [],
+            "download_servers": []
+          },
+          {
+            "number": 6,
+            "title": "There Are Two Kinds of Lies; One Concerns an Accomplished Fact, the Other Concerns a Future Duty",
+            "stream_servers": [],
+            "download_servers": []
+          },
+          {
+            "number": 7,
+            "title": "Nothing Is as Dangerous as an Ignorant Friend; A Wise Enemy Is to Be Preferred",
+            "stream_servers": [],
+            "download_servers": []
+          },
+          {
+            "number": 8,
+            "title": "There Are Two Kinds of Lying. One, Intentional Lying. The Other, Unintentional Lying",
+            "stream_servers": [],
+            "download_servers": []
+          },
+          {
+            "number": 9,
+            "title": "Man Is Condemned to Be Free",
+            "stream_servers": [],
+            "download_servers": []
+          },
+          {
+            "number": 10,
+            "title": "Every Man Has in Himself the Most Dangerous Traitor of All",
+            "stream_servers": [],
+            "download_servers": []
+          },
+          {
+            "number": 11,
+            "title": "What People Commonly Call Fate Is Mostly Their Own Stupidity",
+            "stream_servers": [],
+            "download_servers": []
+          },
+          {
+            "number": 12,
+            "title": "Genius Lives Only One Story Above Madness",
+            "stream_servers": [],
+            "download_servers": []
+          }
+        ]
+      }
+    ]
   }
 ]
