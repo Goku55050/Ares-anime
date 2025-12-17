@@ -1623,8 +1623,18 @@
           {
             "number": 12,
             "title": "Arise",
-            "stream_servers": [],
-            "download_servers": []
+            "stream_servers": [
+              {
+                "name": "Filemoon",
+                "url": "https://filemoon.to/e/59jtz8xuovw8/AresAnime__Solo-Leveling__S1_E12_Hindi.mp4"
+              }
+            ],
+            "download_servers": [
+              {
+                "name": "Filemoon DL",
+                "url": "https://filemoon.to/download/59jtz8xuovw8/AresAnime__Solo-Leveling__S1_E12_Hindi.mp4"
+              }
+            ]
           }
         ]
       }
