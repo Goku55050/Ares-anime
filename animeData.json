@@ -1655,110 +1655,290 @@
           {
             "number": 1,
             "title": "A Peacetime Reward: Who Gets the 100,000,000 Zeni?!",
-            "stream_servers": [],
-            "download_servers": []
+            "stream_servers": [
+              {
+                "name": "Filemoon",
+                "url": "https://filemoon.to/e/dh3473l0f6jh/AresAnime_DBS_S1_E1_Hindi.mp4"
+              }
+            ],
+            "download_servers": [
+              {
+                "name": "Filemoon DL",
+                "url": "https://filemoon.to/download/dh3473l0f6jh/AresAnime_DBS_S1_E1_Hindi.mp4"
+              }
+            ]
           },
           {
             "number": 2,
             "title": "To the Promised Resort! Vegeta Takes a Family Trip!",
-            "stream_servers": [],
-            "download_servers": []
+            "stream_servers": [
+              {
+                "name": "Filemoon",
+                "url": "https://filemoon.to/e/gui26qju9xrr/AresAnime_DBS_S1_E2_Hindi.mp4"
+              }
+            ],
+            "download_servers": [
+              {
+                "name": "Filemoon DL",
+                "url": "https://filemoon.to/download/gui26qju9xrr/AresAnime_DBS_S1_E2_Hindi.mp4"
+              }
+            ]
           },
           {
             "number": 3,
             "title": "Where Does the Dream Pick Up? Find the Super Saiyan God!",
-            "stream_servers": [],
-            "download_servers": []
+            "stream_servers": [
+              {
+                "name": "Filemoon",
+                "url": "https://filemoon.to/e/jgsvutyiy8bi/AresAnime_DBS_S1_E3_Hindi.mp4"
+              }
+            ],
+            "download_servers": [
+              {
+                "name": "Filemoon DL",
+                "url": "https://filemoon.to/download/jgsvutyiy8bi/AresAnime_DBS_S1_E3_Hindi.mp4"
+              }
+            ]
           },
           {
             "number": 4,
             "title": "Bid for the Dragon Balls! Pilaf and Crew's Impossible Mission!",
-            "stream_servers": [],
-            "download_servers": []
+            "stream_servers": [
+              {
+                "name": "Filemoon",
+                "url": "https://filemoon.to/e/jf09ood7lrsn/AresAnime_DBS_S1_E4_Hindi.mp4"
+              }
+            ],
+            "download_servers": [
+              {
+                "name": "Filemoon DL",
+                "url": "https://filemoon.to/download/jf09ood7lrsn/AresAnime_DBS_S1_E4_Hindi.mp4"
+              }
+            ]
           },
           {
             "number": 5,
             "title": "Showdown on King Kai's World! Goku vs. Beerus the Destroyer",
-            "stream_servers": [],
-            "download_servers": []
+            "stream_servers": [
+              {
+                "name": "Filemoon",
+                "url": "https://filemoon.to/e/ge3xz4vx3t3h/AresAnime_DBS_S1_E5_Hindi.mp4"
+              }
+            ],
+            "download_servers": [
+              {
+                "name": "Filemoon DL",
+                "url": "https://filemoon.to/download/ge3xz4vx3t3h/AresAnime_DBS_S1_E5_Hindi.mp4"
+              }
+            ]
           },
           {
             "number": 6,
             "title": "Don't Anger the Destroyer! A Heart-Pounding Birthday Party",
-            "stream_servers": [],
-            "download_servers": []
+            "stream_servers": [
+              {
+                "name": "Filemoon",
+                "url": "https://filemoon.to/e/2ytuo4dffveq/AresAnime_DBS_S1_E6_Hindi.mp4"
+              }
+            ],
+            "download_servers": [
+              {
+                "name": "Filemoon DL",
+                "url": "https://filemoon.to/download/2ytuo4dffveq/AresAnime_DBS_S1_E6_Hindi.mp4"
+              }
+            ]
           },
           {
             "number": 7,
             "title": "How Dare You Do That to My Bulma! Vegeta's Metamorphosis of Fury?",
-            "stream_servers": [],
-            "download_servers": []
+            "stream_servers": [
+              {
+                "name": "Filemoon",
+                "url": "https://filemoon.to/e/3tmtx0doxi0m/AresAnime_DBS_S1_E7_Hindi.mp4"
+              }
+            ],
+            "download_servers": [
+              {
+                "name": "Filemoon DL",
+                "url": "https://filemoon.to/download/3tmtx0doxi0m/AresAnime_DBS_S1_E7_Hindi.mp4"
+              }
+            ]
           },
           {
             "number": 8,
             "title": "Goku Steps Up! The Last Chance from Lord Beerus?",
-            "stream_servers": [],
-            "download_servers": []
+            "stream_servers": [
+              {
+                "name": "Filemoon",
+                "url": "https://filemoon.to/e/mteczcckafbw/AresAnime_DBS_S1_E8_Hindi.mp4"
+              }
+            ],
+            "download_servers": [
+              {
+                "name": "Filemoon DL",
+                "url": "https://filemoon.to/download/mteczcckafbw/AresAnime_DBS_S1_E8_Hindi.mp4"
+              }
+            ]
           },
           {
             "number": 9,
             "title": "Thanks for Waiting, Lord Beerus! A Super Saiyan God is Born at Last!",
-            "stream_servers": [],
-            "download_servers": []
+            "stream_servers": [
+              {
+                "name": "Filemoon",
+                "url": "https://filemoon.to/e/gud306rut3uz/AresAnime_DBS_S1_E9_Hindi.mp4"
+              }
+            ],
+            "download_servers": [
+              {
+                "name": "Filemoon DL",
+                "url": "https://filemoon.to/download/gud306rut3uz/AresAnime_DBS_S1_E9_Hindi.mp4"
+              }
+            ]
           },
           {
             "number": 10,
             "title": "Show Us, Goku! The Power of a Super Saiyan God!",
-            "stream_servers": [],
-            "download_servers": []
+            "stream_servers": [
+              {
+                "name": "Filemoon",
+                "url": "https://filemoon.to/e/0kf9rwm7aosl/AresAnime_DBS_S1_E10_Hindi.mp4"
+              }
+            ],
+            "download_servers": [
+              {
+                "name": "Filemoon DL",
+                "url": "https://filemoon.to/download/0kf9rwm7aosl/AresAnime_DBS_S1_E10_Hindi.mp4"
+              }
+            ]
           },
           {
             "number": 11,
             "title": "lLet's Keep Going, Lord Beerus! The Battle of Gods!",
-            "stream_servers": [],
-            "download_servers": []
+            "stream_servers": [
+              {
+                "name": "Filemoon",
+                "url": "https://filemoon.to/e/ep1rr7akqk5m/AresAnime_DBS_S1_E11_Hindi.mp4"
+              }
+            ],
+            "download_servers": [
+              {
+                "name": "Filemoon DL",
+                "url": "https://filemoon.to/download/ep1rr7akqk5m/AresAnime_DBS_S1_E11_Hindi.mp4"
+              }
+            ]
           },
           {
             "number": 12,
             "title": "The Universe Will Shatter? Clash! Destroyer vs. Super Saiyan God!",
-            "stream_servers": [],
-            "download_servers": []
+            "stream_servers": [
+              {
+                "name": "Filemoon",
+                "url": "https://filemoon.to/e/a2rfmykohtph/AresAnime_DBS_S1_E12_Hindi.mp4"
+              }
+            ],
+            "download_servers": [
+              {
+                "name": "Filemoon DL",
+                "url": "https://filemoon.to/download/a2rfmykohtph/AresAnime_DBS_S1_E12_Hindi.mp4"
+              }
+            ]
           },
           {
             "number": 13,
             "title": "Goku, Surpass the Super Saiyan God!",
-            "stream_servers": [],
-            "download_servers": []
+            "stream_servers": [
+              {
+                "name": "Filemoon",
+                "url": "https://filemoon.to/e/lq3xuqmz6epm/AresAnime_DBS_S1_E13_Hindi.mp4"
+              }
+            ],
+            "download_servers": [
+              {
+                "name": "Filemoon DL",
+                "url": "https://filemoon.to/download/lq3xuqmz6epm/AresAnime_DBS_S1_E13_Hindi.mp4"
+              }
+            ]
           },
           {
             "number": 14,
             "title": "This is Every Ounce of My Power! The Conclusion of the Battle of Gods!",
-            "stream_servers": [],
-            "download_servers": []
+            "stream_servers": [
+              {
+                "name": "Filemoon",
+                "url": "https://filemoon.to/e/64gx0ci7igow/AresAnime_DBS_S1_E14_Hindi.mp4"
+              }
+            ],
+            "download_servers": [
+              {
+                "name": "Filemoon DL",
+                "url": "https://filemoon.to/download/64gx0ci7igow/AresAnime_DBS_S1_E14_Hindi.mp4"
+              }
+            ]
           },
           {
             "number": 15,
             "title": "Valiant Mr. Satan, Work a Miracle! A Challenge from Outer Space!",
-            "stream_servers": [],
-            "download_servers": []
+            "stream_servers": [
+              {
+                "name": "Filemoon",
+                "url": "https://filemoon.to/e/b551fs72pw32/AresAnime_DBS_S1_E15_Hindi.mp4"
+              }
+            ],
+            "download_servers": [
+              {
+                "name": "Filemoon DL",
+                "url": "https://filemoon.to/download/b551fs72pw32/AresAnime_DBS_S1_E15_Hindi.mp4"
+              }
+            ]
           },
           {
             "number": 16,
             "title": "Vegeta Becomes a Pupil?! Take Down Whis!",
-            "stream_servers": [],
-            "download_servers": []
+            "stream_servers": [
+              {
+                "name": "Filemoon",
+                "url": "https://filemoon.to/e/dgbr4ewz07pz/AresAnime_DBS_S1_E16_Hindi.mp4"
+              }
+            ],
+            "download_servers": [
+              {
+                "name": "Filemoon DL",
+                "url": "https://filemoon.to/download/dgbr4ewz07pz/AresAnime_DBS_S1_E16_Hindi.mp4"
+              }
+            ]
           },
           {
             "number": 17,
             "title": "Pan is Born! And Goku Goes on a Training Journey?!",
-            "stream_servers": [],
-            "download_servers": []
+            "stream_servers": [
+              {
+                "name": "Filemoon",
+                "url": "https://filemoon.to/e/15bx6fcy4v41/AresAnime_DBS_S1_E17_Hindi.mp4"
+              }
+            ],
+            "download_servers": [
+              {
+                "name": "Filemoon DL",
+                "url": "https://filemoon.to/download/15bx6fcy4v41/AresAnime_DBS_S1_E17_Hindi.mp4"
+              }
+            ]
           },
           {
             "number": 18,
             "title": "I'm Here, Too! Training Begins on Beerus' World!",
-            "stream_servers": [],
-            "download_servers": []
+            "stream_servers": [
+              {
+                "name": "Filemoon",
+                "url": "https://filemoon.to/e/njf15aqaxa8t/AresAnime_DBS_S1_E18_Hindi.mp4"
+              }
+            ],
+            "download_servers": [
+              {
+                "name": "Filemoon DL",
+                "url": "https://filemoon.to/download/njf15aqaxa8t/AresAnime_DBS_S1_E18_Hindi.mp4"
+              }
+            ]
           }
         ]
       }
